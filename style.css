@@ -1,0 +1,192 @@
+:root {
+    --main: #00d4ff;
+    --accent: #00f0ff;
+    --dark: #050810;
+    --card: rgba(26, 35, 51, 0.7);
+    --text: #f1f5f9;
+    --text-light: #94a3b8;
+    --gold: #fbbf24;
+    --silver: #94a3b8;
+    --bronze: #d97706;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--dark);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(0, 212, 255, 0.15) 0, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.1) 0, transparent 50%);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 60px 20px 20px;
+    text-align: center;
+}
+
+.logo {
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: var(--main);
+    margin-bottom: 10px;
+    text-shadow: 0 0 15px rgba(0, 212, 255, 0.5);
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.subtitle {
+    color: var(--text-light);
+    margin-top: 10px;
+}
+
+/* TABS */
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px auto;
+    max-width: 800px;
+    flex-wrap: wrap;
+    padding: 0 20px;
+}
+
+.tab {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    color: var(--text-light);
+    padding: 12px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.tab.active {
+    background: var(--main);
+    color: var(--dark);
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    border-color: var(--main);
+}
+
+/* CONTAINER Y TABLAS */
+.content-container {
+    max-width: 1100px;
+    margin: 0 auto 100px;
+    padding: 0 20px;
+}
+
+.ranking-table {
+    display: none; /* Crucial para evitar que se amontonen */
+    opacity: 0;
+    transform: translateY(15px);
+    background: var(--card);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.ranking-table.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 30px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.status-live {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 800;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+}
+
+.table-responsive { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; }
+
+th {
+    text-align: left;
+    padding: 20px 25px;
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-light);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+td {
+    padding: 16px 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* TOP 3 */
+.top-1 { background: rgba(251, 191, 36, 0.04); }
+.top-2 { background: rgba(148, 163, 184, 0.04); }
+.top-3 { background: rgba(217, 119, 6, 0.04); }
+
+.rank-num { font-weight: 800; font-family: 'Roboto Mono'; }
+.top-1 .rank-num { color: var(--gold); }
+
+/* JUGADOR */
+.player-cell { display: flex; align-items: center; gap: 12px; }
+.player-head { 
+    width: 36px; 
+    height: 36px; 
+    border-radius: 6px; 
+    border: 1px solid rgba(255,255,255,0.1); 
+}
+
+.player { font-weight: 600; }
+.points { font-family: 'Roboto Mono'; color: var(--main); font-weight: 700; }
+
+/* TIERS */
+.tier-badge {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 800;
+    min-width: 60px;
+    text-align: center;
+}
+.ht1 { background: linear-gradient(135deg, #00f0ff, #0072ff); color: white; }
+.lt2 { background: #bae6fd; color: #0c4a6e; }
+.ht2 { background: #0ea5e9; color: white; }
+.ht3 { background: #0284c7; color: white; }
+.lt3 { background: #075985; color: white; }
+
+/* INFO */
+.info-content { padding: 40px; }
+.tier-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; margin: 20px 0; }
+.tier-item { background: rgba(255,255,255,0.03); padding: 15px; border-radius: 12px; text-align: center; }
+.highlight { background: rgba(0, 212, 255, 0.05); border-left: 4px solid var(--main); padding: 15px; margin-top: 20px; }
+
+footer { text-align: center; padding: 60px; color: var(--text-light); opacity: 0.5; font-size: 13px; }
+
